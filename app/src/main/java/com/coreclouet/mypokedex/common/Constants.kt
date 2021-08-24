@@ -1,0 +1,1 @@
+package com.coreclouet.mypokedex.common

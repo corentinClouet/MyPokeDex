@@ -1,0 +1,21 @@
+plugins {
+    id 'java-library'
+    id 'kotlin'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_7
+    targetCompatibility = JavaVersion.VERSION_1_7
+}
+
+dependencies {
+    //coroutines
+    def coroutines_version = "1.4.3"
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version")
+
+    //di
+    def koin_version = "2.1.6"
+    implementation("org.koin:koin-android:$koin_version")
+    implementation("org.koin:koin-androidx-viewmodel:$koin_version")
+    implementation("org.koin:koin-androidx-scope:$koin_version")
+}
