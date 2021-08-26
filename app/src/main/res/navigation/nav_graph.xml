@@ -12,20 +12,24 @@
         tools:layout="@layout/home_fragment" >
         <action
             android:id="@+id/action_homeFragment_to_pokedexFragment"
-            app:destination="@id/pokedexFragment" />
+            app:destination="@id/pokedexFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/pokedexFragment"
         android:name="com.coreclouet.mypokedex.ui.PokedexFragment"
-        android:label="pokedex_fragment"
-        tools:layout="@layout/pokedex_fragment" >
+        android:label="@string/pokedex"
+        tools:layout="@layout/pokedex_fragment">
         <action
             android:id="@+id/action_pokedexFragment_to_pokemonFragment"
-            app:destination="@id/pokemonFragment" />
+            app:destination="@id/pokemonFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/pokemonFragment"
         android:name="com.coreclouet.mypokedex.ui.PokemonFragment"
-        android:label="pokemon_fragment"
+        android:label="@string/pokemon"
         tools:layout="@layout/pokemon_fragment" />
 </navigation>
