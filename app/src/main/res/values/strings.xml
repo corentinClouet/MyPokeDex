@@ -3,4 +3,6 @@
     <string name="home_title">What are \nyou looking for ?</string>
     <string name="pokedex">Pokédex</string>
     <string name="pokemon">Pokémon</string>
+    <string name="filter">Filter</string>
+    <string name="display_mode">Display mode</string>
 </resources>

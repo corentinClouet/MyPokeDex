@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#FFFFFF</color>
-    <color name="primary_variant">#fafafa</color>
-    <color name="on_primary">#000000</color>
-    <color name="secondary">#e0e0e0</color>
-    <color name="secondary_variant">#aeaeae</color>
-    <color name="on_secondary">#000000</color>
 
+    <!--Theme Light-->
+    <color name="primary">#4EAD40</color>
+    <color name="primary_variant">#3A8C2D</color>
+    <color name="secondary">#CEA0D5</color>
+    <color name="secondary_variant">#582A8A</color>
+    <color name="background">#FFFFFF</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="error">#B00020</color>
+    <color name="on_primary">#000000</color>
+    <color name="on_secondary">#000000</color>
+    <color name="on_background">#000000</color>
+    <color name="on_surface">#000000</color>
+    <color name="on_error">#FFFFFF</color>
+    <color name="status_bar">#FFFFFF</color>
+    <color name="toolbar">#EAEAEA</color>
+
+    <!--Type colors-->
     <color name="bug_type">#83C300</color>
     <color name="dark_type">#5B5466</color>
     <color name="dragon_type">#006FC9</color>
@@ -26,7 +37,9 @@
     <color name="steel_type">#5A8EA2</color>
     <color name="water_type">#3692DC</color>
 
-    <color name="pokedex_item">#5DBE62</color>
+    <!--Home items colors-->
+    <color name="home_item_text">#FFFFFF</color>
+    <color name="home_pokedex_item">#5DBE62</color>
 
 
 </resources>

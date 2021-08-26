@@ -2,10 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/Theme.MyPokeDex">
+    android:background="@color/background"
+    tools:context=".ui.HomeFragment">
 
     <TextView
         android:id="@+id/tv_home_title"
@@ -16,7 +16,7 @@
         android:layout_marginEnd="24dp"
         android:text="@string/home_title"
         android:textAlignment="viewStart"
-        android:textColor="@android:color/white"
+        android:textColor="@color/on_background"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,7 +33,7 @@
         android:clickable="true"
         android:focusable="true"
         android:foreground="?android:attr/selectableItemBackground"
-        app:cardBackgroundColor="@color/pokedex_item"
+        app:cardBackgroundColor="@color/home_pokedex_item"
         app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,9 +48,10 @@
             android:layout_marginBottom="24dp"
             android:fontFamily="@font/poppins_medium"
             android:text="@string/pokedex"
-            android:textColor="@android:color/white"
+            android:textColor="@color/home_item_text"
             android:textSize="24sp"
             android:textStyle="bold"
             tools:ignore="TextContrastCheck" />
     </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

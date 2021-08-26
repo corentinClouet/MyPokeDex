@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/nav_filter"
+        android:icon="@drawable/ic_filter_24"
+        android:title="@string/filter"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/nav_display_mode"
+        android:icon="@drawable/ic_grid_on_24"
+        android:title="@string/display_mode"
+        app:showAsAction="ifRoom" />
+</menu>
