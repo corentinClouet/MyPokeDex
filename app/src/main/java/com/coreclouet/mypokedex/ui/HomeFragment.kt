@@ -10,15 +10,15 @@ import androidx.navigation.findNavController
 import com.coreclouet.mypokedex.R
 import com.coreclouet.mypokedex.databinding.HomeFragmentBinding
 import com.coreclouet.mypokedex.viewmodel.HomeFragmentViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
 
     private var _binding: HomeFragmentBinding? = null
+    private val viewModel: HomeFragmentViewModel by viewModel()
 
     // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding
-
-    private lateinit var viewModel: HomeFragmentViewModel
 
     companion object {
         fun newInstance() = HomeFragment()
@@ -36,9 +36,9 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding?.cvPokedex?.setOnClickListener {
-            Log.d("CRTNCLT", "cvPokedex?.setOnClickListener")
-            val action = HomeFragmentDirections.actionHomeFragmentToPokedexFragment()
-            it.findNavController().navigate(action)
+/*            val action = HomeFragmentDirections.actionHomeFragmentToPokedexFragment()
+            it.findNavController().navigate(action)*/
+            viewModel.getVersions()
         }
     }
 
