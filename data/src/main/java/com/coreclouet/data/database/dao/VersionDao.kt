@@ -11,14 +11,17 @@ import com.coreclouet.data.database.model.VersionEntity
 interface VersionDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertVersionInfo(version: VersionEntity)
+    suspend fun insertVersion(version: VersionEntity)
 
     @Query("SELECT * FROM $VERSION_TABLE_NAME")
-    suspend fun getVersions(): List<VersionEntity>
+    suspend fun getVersions(): List<VersionEntity>?
 
     @Query("SELECT name FROM $VERSION_TABLE_NAME")
     suspend fun getVersionsNames(): List<String>?
 
     @Query("SELECT * FROM $VERSION_TABLE_NAME WHERE name=:name")
     suspend fun getVersion(name: String): VersionEntity?
+
+    @Query("SELECT * FROM $VERSION_TABLE_NAME WHERE id=:id")
+    suspend fun getVersion(id: Long): VersionEntity?
 }

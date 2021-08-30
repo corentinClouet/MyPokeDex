@@ -11,35 +11,54 @@ import kotlinx.coroutines.withContext
 class VersionRepositoryImpl(
     private val apiService: ApiService,
     private val versionDao: VersionDao,
-    private val dispatcher: CoroutineDispatcher = Dispatchers.Default
+    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : VersionRepository {
 
-    override suspend fun getVersionList(): List<String>? = withContext(dispatcher) {
+    override suspend fun getVersionsList(): List<Version>? = withContext(dispatcher) {
         //check database result
-        val dbVersions = versionDao.getVersionsNames()
-        if (!dbVersions.isNullOrEmpty()) return@withContext dbVersions
+        val dbVersions = versionDao.getVersions()
+        if (!dbVersions.isNullOrEmpty()) return@withContext dbVersions.map { it.mapToDomain() }
+        //if database result null, check remote data
+        val versionsNamesList = getVersionsNamesList()
+        versionsNamesList?.let {
+            it.forEach { versionName ->
+                //get data from BO and save it to DB
+                getVersion(versionName)
+            }
+        }
+        val finalResult = versionDao.getVersions()
+        return@withContext finalResult?.map { it.mapToDomain() }
+    }
+
+    override suspend fun getVersionsNamesList(): List<String>? = withContext(dispatcher) {
+        //check database result
+        val dbVersionsNames = versionDao.getVersionsNames()
+        if (!dbVersionsNames.isNullOrEmpty()) return@withContext dbVersionsNames
         //if database result null, check remote data
         val remoteResult = apiService.getVersions()
         if (remoteResult.isSuccessful) {
-            val versionListResponse = remoteResult.body()
+            val versionsNamesListResponse = remoteResult.body()
             val resultList = mutableListOf<String>()
-            versionListResponse?.results?.forEach { it.name?.let { name -> resultList.add(name) } }
+            versionsNamesListResponse?.results?.forEach { it.name?.let { name -> resultList.add(name) } }
             return@withContext resultList
         }
         return@withContext null
     }
 
-    //TODO parse to Version object
     override suspend fun getVersion(name: String): Version? = withContext(dispatcher) {
         //check database result
         val dbVersion = versionDao.getVersion(name)
-        if (dbVersion != null) return@withContext dbVersion
+        if (dbVersion != null) return@withContext dbVersion.mapToDomain()
         //if database result null, check remote data
         val remoteResult = apiService.getVersionByName(name)
-        return@withContext remoteResult.body()
-    }
-
-    override suspend fun getVersion(id: Long): Version? {
-        TODO("Not yet implemented")
+        if (remoteResult.isSuccessful) {
+            val versionRemote = remoteResult.body()
+            if (versionRemote != null) {
+                val dbMapVersion = versionRemote.mapToRoomEntity()
+                versionDao.insertVersion(dbMapVersion)
+                return@withContext dbMapVersion.mapToDomain()
+            }
+        }
+        return@withContext null
     }
 }

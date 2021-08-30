@@ -1,5 +1,6 @@
 package com.coreclouet.data.networking.model
 
+import com.coreclouet.data.database.model.VersionEntity
 import com.google.gson.annotations.SerializedName
 
 data class VersionDetailResponse(
@@ -8,14 +9,22 @@ data class VersionDetailResponse(
 	val names: List<NamesItem?>? = null,
 
 	@field:SerializedName("version_group")
-	val versionGroup: VersionGroup? = null,
+	val versionGroup: VersionGroup,
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
 	@field:SerializedName("id")
-	val id: Int? = null
-)
+	val id: Int
+) {
+	fun mapToRoomEntity(): VersionEntity {
+		return VersionEntity(
+			id = this.id,
+			name = this.name,
+			versionGroupName = this.versionGroup.name
+		)
+	}
+}
 
 data class VersionGroup(
 
