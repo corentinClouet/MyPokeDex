@@ -1,8 +1,9 @@
 package com.coreclouet.data.networking.model
 
+import com.coreclouet.data.database.model.GenerationEntity
 import com.google.gson.annotations.SerializedName
 
-data class GenerationDetailResponse(
+data class GenerationRemote(
 
 	@field:SerializedName("abilities")
 	val abilities: List<Any>? = null,
@@ -14,7 +15,7 @@ data class GenerationDetailResponse(
 	val names: List<NamesItem>? = null,
 
 	@field:SerializedName("main_region")
-	val mainRegion: MainRegion? = null,
+	val mainRegion: MainRegion,
 
 	@field:SerializedName("version_groups")
 	val versionGroups: List<VersionGroupsItem>? = null,
@@ -23,56 +24,64 @@ data class GenerationDetailResponse(
 	val moves: List<GenerationMovesItem>? = null,
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
 	@field:SerializedName("id")
-	val id: Int? = null,
+	val id: Int,
 
 	@field:SerializedName("pokemon_species")
 	val pokemonSpecies: List<PokemonSpeciesItem>? = null
-)
+) {
+	fun mapToRoomEntity(): GenerationEntity {
+		return GenerationEntity(
+			id = this.id,
+			name = this.name,
+			mainRegionName = this.mainRegion.name
+		)
+	}
+}
 
 data class MainRegion(
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
 	@field:SerializedName("url")
-	val url: String? = null
+	val url: String
 )
 
 data class VersionGroupsItem(
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
 	@field:SerializedName("url")
-	val url: String? = null
+	val url: String
 )
 
 data class GenerationTypesItem(
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
 	@field:SerializedName("url")
-	val url: String? = null
+	val url: String
 )
 
 data class GenerationMovesItem(
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
 	@field:SerializedName("url")
-	val url: String? = null
+	val url: String
 )
 
 data class PokemonSpeciesItem(
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
 	@field:SerializedName("url")
-	val url: String? = null
+	val url: String
 )

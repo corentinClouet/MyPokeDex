@@ -3,7 +3,7 @@ package com.coreclouet.data.networking.model
 import com.coreclouet.data.database.model.VersionGroupEntity
 import com.google.gson.annotations.SerializedName
 
-data class VersionGroupResponse(
+data class VersionGroupRemote(
 
 	@field:SerializedName("generation")
 	val generation: VgGeneration,

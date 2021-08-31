@@ -5,6 +5,13 @@ apply plugin: 'kotlin-kapt'
 
 android {
     compileSdk 30
+    defaultConfig {
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas")
+            }
+        }
+    }
 }
 
 dependencies {

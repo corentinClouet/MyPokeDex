@@ -9,8 +9,8 @@ import com.coreclouet.domain.model.Version
 data class VersionEntity(
     @PrimaryKey
     val id: Int,
-    val name: String?,
-    val versionGroupName: String?
+    val name: String,
+    val versionGroupName: String
 ) {
     fun mapToDomain(): Version {
         return Version(

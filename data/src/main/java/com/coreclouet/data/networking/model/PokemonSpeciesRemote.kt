@@ -2,7 +2,7 @@ package com.coreclouet.data.networking.model
 
 import com.google.gson.annotations.SerializedName
 
-data class PokemonSpeciesResponse(
+data class PokemonSpeciesRemote(
 
 	@field:SerializedName("evolution_chain")
 	val evolutionChain: EvolutionChain? = null,

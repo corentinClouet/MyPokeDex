@@ -2,22 +2,22 @@ package com.coreclouet.data.networking.model
 
 import com.google.gson.annotations.SerializedName
 
-data class PokemonListResponse(
+data class VersionGroupListRemote(
 
 	@field:SerializedName("next")
-	val next: String? = null,
+	val next: Any? = null,
 
 	@field:SerializedName("previous")
-	val previous: String? = null,
+	val previous: Any? = null,
 
 	@field:SerializedName("count")
-	val count: Int? = null,
+	val count: Int,
 
 	@field:SerializedName("results")
-	val results: List<PokemonItem>? = null
+	val results: List<VgItem>? = null
 )
 
-data class PokemonItem(
+data class VgItem(
 
 	@field:SerializedName("name")
 	val name: String,

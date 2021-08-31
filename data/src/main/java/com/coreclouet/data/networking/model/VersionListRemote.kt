@@ -2,22 +2,22 @@ package com.coreclouet.data.networking.model
 
 import com.google.gson.annotations.SerializedName
 
-data class GenerationListResponse(
+data class VersionListRemote(
 
 	@field:SerializedName("next")
-	val next: Any? = null,
+	val next: String? = null,
 
 	@field:SerializedName("previous")
-	val previous: Any? = null,
+	val previous: String? = null,
 
 	@field:SerializedName("count")
 	val count: Int? = null,
 
 	@field:SerializedName("results")
-	val results: List<GenerationItem?>? = null
+	val results: List<VersionItem>? = null
 )
 
-data class GenerationItem(
+data class VersionItem(
 
 	@field:SerializedName("name")
 	val name: String? = null,

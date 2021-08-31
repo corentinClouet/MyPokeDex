@@ -1,8 +1,6 @@
 package com.coreclouet.data.networking
 
-import com.coreclouet.data.networking.model.VersionDetailResponse
-import com.coreclouet.data.networking.model.VersionGroupResponse
-import com.coreclouet.data.networking.model.VersionListResponse
+import com.coreclouet.data.networking.model.*
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -10,14 +8,20 @@ import retrofit2.http.Path
 interface ApiService {
 
     @GET("version")
-    suspend fun getVersions(): Response<VersionListResponse>
-
-    @GET("version/{id}")
-    suspend fun getVersionById(@Path("id") id: Long): Response<VersionDetailResponse>
+    suspend fun getVersions(): Response<VersionListRemote>
 
     @GET("version/{name}")
-    suspend fun getVersionByName(@Path("name") name: String): Response<VersionDetailResponse?>
+    suspend fun getVersionByName(@Path("name") name: String): Response<VersionRemote?>
+
+    @GET("version-group")
+    suspend fun getVersionsGroups(): Response<VersionGroupListRemote?>
 
     @GET("version-group/{name}")
-    suspend fun getVersionGroupByName(@Path("name") name: String): Response<VersionGroupResponse?>
+    suspend fun getVersionGroupByName(@Path("name") name: String): Response<VersionGroupRemote?>
+
+    @GET("generation")
+    suspend fun getGenerations(): Response<GenerationListRemote>
+
+    @GET("generation/{name}")
+    suspend fun getGenerationByName(@Path("name") name: String): Response<GenerationRemote?>
 }

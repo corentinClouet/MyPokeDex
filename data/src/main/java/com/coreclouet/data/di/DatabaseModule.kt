@@ -14,4 +14,5 @@ val databaseModule = module {
     }
     factory { get<MyPokedexDatabase>().versionDao() }
     factory { get<MyPokedexDatabase>().versionGroupDao() }
+    factory { get<MyPokedexDatabase>().generationDao() }
 }

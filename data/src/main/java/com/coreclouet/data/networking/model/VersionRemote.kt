@@ -3,10 +3,10 @@ package com.coreclouet.data.networking.model
 import com.coreclouet.data.database.model.VersionEntity
 import com.google.gson.annotations.SerializedName
 
-data class VersionDetailResponse(
+data class VersionRemote(
 
 	@field:SerializedName("names")
-	val names: List<NamesItem?>? = null,
+	val names: List<NamesItem>? = null,
 
 	@field:SerializedName("version_group")
 	val versionGroup: VersionGroup,
@@ -29,8 +29,8 @@ data class VersionDetailResponse(
 data class VersionGroup(
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
 	@field:SerializedName("url")
-	val url: String? = null
+	val url: String
 )
