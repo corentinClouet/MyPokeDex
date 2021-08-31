@@ -13,4 +13,5 @@ val databaseModule = module {
             .fallbackToDestructiveMigration().build()
     }
     factory { get<MyPokedexDatabase>().versionDao() }
+    factory { get<MyPokedexDatabase>().versionGroupDao() }
 }

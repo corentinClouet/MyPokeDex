@@ -2,10 +2,10 @@ package com.coreclouet.data.database.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.coreclouet.data.database.VERSION_TABLE_NAME
+import com.coreclouet.data.database.VERSION_GROUP_TABLE_NAME
 import com.coreclouet.domain.model.VersionGroup
 
-@Entity(tableName = VERSION_TABLE_NAME)
+@Entity(tableName = VERSION_GROUP_TABLE_NAME)
 data class VersionGroupEntity(
     @PrimaryKey
     val id: Int,
