@@ -2,7 +2,7 @@ package com.coreclouet.data.networking.model
 
 import com.google.gson.annotations.SerializedName
 
-data class PokemonDetailResponse(
+data class PokemonRemote(
 
 	@field:SerializedName("location_area_encounters")
 	val locationAreaEncounters: String? = null,
@@ -149,7 +149,7 @@ data class VersionGroupDetailsItem(
 	val levelLearnedAt: Int? = null,
 
 	@field:SerializedName("version_group")
-	val versionGroup: VersionGroup? = null,
+	val versionGroup: PokemonVersionGroup? = null,
 
 	@field:SerializedName("move_learn_method")
 	val moveLearnMethod: MoveLearnMethod? = null
@@ -377,7 +377,7 @@ data class GenerationViii(
 	val icons: Icons? = null
 )
 
-data class VersionGroup(
+data class PokemonVersionGroup(
 
 	@field:SerializedName("name")
 	val name: String? = null,
