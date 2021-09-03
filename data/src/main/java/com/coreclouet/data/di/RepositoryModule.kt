@@ -20,7 +20,27 @@ val repositoryModule = module {
         )
     }
     factory<VersionRepository> { VersionRepositoryImpl(apiService = get(), versionDao = get()) }
-    factory<AbilityRepository> { AbilityRepositoryImpl(apiService = get(), abilityDao = get()) }
-    factory<PokemonRepository> { PokemonRepositoryImpl(apiService = get(), pokemonDao = get()) }
+    factory<AbilityRepository> {
+        AbilityRepositoryImpl(
+            apiService = get(),
+            abilityDao = get(),
+            pokemonAbilityCrossRefDao = get()
+        )
+    }
+    factory<PokemonRepository> {
+        PokemonRepositoryImpl(
+            apiService = get(),
+            pokemonDao = get(),
+            abilityRepository = get(),
+            typeRepository = get()
+        )
+    }
+    factory<TypeRepository> {
+        TypeRepositoryImpl(
+            apiService = get(),
+            typeDao = get(),
+            pokemonTypeCrossRefDao = get()
+        )
+    }
 
 }

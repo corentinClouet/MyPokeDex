@@ -427,7 +427,7 @@ data class PkAbilitiesItem(
 	val isHidden: Boolean,
 
 	@field:SerializedName("ability")
-	val ability: PkAbility? = null,
+	val ability: PkAbility,
 
 	@field:SerializedName("slot")
 	val slot: Int

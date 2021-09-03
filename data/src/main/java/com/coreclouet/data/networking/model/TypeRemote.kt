@@ -1,5 +1,7 @@
 package com.coreclouet.data.networking.model
 
+import com.coreclouet.data.database.DELIMITER
+import com.coreclouet.data.database.model.TypeEntity
 import com.google.gson.annotations.SerializedName
 
 data class TypeRemote(
@@ -11,7 +13,7 @@ data class TypeRemote(
 	val gameIndices: List<TpGameIndicesItem>? = null,
 
 	@field:SerializedName("move_damage_class")
-	val moveDamageClass: TpMoveDamageClass? = null,
+	val moveDamageClass: TpMoveDamageClass,
 
 	@field:SerializedName("names")
 	val names: List<TpNamesItem>? = null,
@@ -30,7 +32,22 @@ data class TypeRemote(
 
 	@field:SerializedName("id")
 	val id: Int
-)
+) {
+	fun mapToRoomEntity(): TypeEntity {
+		return TypeEntity(
+			typeId = this.id,
+			typeName = this.name,
+			generationName = this.generation.name,
+			moveDamageClassName = this.moveDamageClass.name,
+			doubleDamageFrom = this.damageRelations?.doubleDamageFrom?.joinToString(separator = DELIMITER) { it -> it.name },
+			doubleDamageTo = this.damageRelations?.doubleDamageTo?.joinToString(DELIMITER) { it -> it.name },
+			halfDamageFrom = this.damageRelations?.halfDamageFrom?.joinToString(DELIMITER) { it -> it.name },
+			halfDamageTo = this.damageRelations?.halfDamageTo?.joinToString(DELIMITER) { it -> it.name },
+			noDamageFrom = this.damageRelations?.noDamageFrom?.joinToString(DELIMITER) { it -> it.name },
+			noDamageTo = this.damageRelations?.noDamageTo?.joinToString(DELIMITER) { it -> it.name }
+		)
+	}
+}
 
 data class TpDoubleDamageToItem(
 
@@ -143,13 +160,13 @@ data class TpGeneration(
 data class TpDamageRelations(
 
 	@field:SerializedName("no_damage_from")
-	val noDamageFrom: List<Any>? = null,
+	val noDamageFrom: List<TpNoDamageFromItem>? = null,
 
 	@field:SerializedName("half_damage_from")
 	val halfDamageFrom: List<TpHalfDamageFromItem>? = null,
 
 	@field:SerializedName("no_damage_to")
-	val noDamageTo: List<Any>? = null,
+	val noDamageTo: List<TpNoDamageToItem>? = null,
 
 	@field:SerializedName("half_damage_to")
 	val halfDamageTo: List<TpHalfDamageToItem>? = null,
@@ -159,4 +176,22 @@ data class TpDamageRelations(
 
 	@field:SerializedName("double_damage_from")
 	val doubleDamageFrom: List<TpDoubleDamageFromItem>? = null
+)
+
+data class TpNoDamageFromItem(
+
+	@field:SerializedName("name")
+	val name: String,
+
+	@field:SerializedName("url")
+	val url: String
+)
+
+data class TpNoDamageToItem(
+
+	@field:SerializedName("name")
+	val name: String,
+
+	@field:SerializedName("url")
+	val url: String
 )

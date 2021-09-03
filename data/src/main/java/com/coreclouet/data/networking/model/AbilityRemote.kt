@@ -1,5 +1,6 @@
 package com.coreclouet.data.networking.model
 
+import com.coreclouet.data.database.ENGLISH_LANGUAGE
 import com.coreclouet.data.database.model.AbilityEntity
 import com.google.gson.annotations.SerializedName
 
@@ -37,9 +38,9 @@ data class AbilityRemote(
 			abilityId = this.id,
 			abilityName = this.name,
 			generationName = this.generation.name,
-			description = this.flavorTextEntries[0].flavorText, //TODO manage language later
-			effect = this.effectEntries[0].effect, //TODO manage language later
-			shortEffect = this.effectEntries[0].shortEffect //TODO manage language later
+			description = this.flavorTextEntries.filter { it.language.name == ENGLISH_LANGUAGE }[0].flavorText, //TODO manage language later
+			effect = this.effectEntries.filter { it.language.name == ENGLISH_LANGUAGE }[0].effect, //TODO manage language later
+			shortEffect = this.effectEntries.filter { it.language.name == ENGLISH_LANGUAGE }[0].shortEffect //TODO manage language later
 		)
 	}
 }

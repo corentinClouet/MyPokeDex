@@ -3,7 +3,9 @@ package com.coreclouet.data.repositoryimpl
 import com.coreclouet.data.database.dao.PokemonDao
 import com.coreclouet.data.networking.ApiService
 import com.coreclouet.domain.model.Pokemon
+import com.coreclouet.domain.repository.AbilityRepository
 import com.coreclouet.domain.repository.PokemonRepository
+import com.coreclouet.domain.repository.TypeRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -11,6 +13,8 @@ import kotlinx.coroutines.withContext
 class PokemonRepositoryImpl(
     private val apiService: ApiService,
     private val pokemonDao: PokemonDao,
+    private val abilityRepository: AbilityRepository,
+    private val typeRepository: TypeRepository,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : PokemonRepository {
 
@@ -63,9 +67,9 @@ class PokemonRepositoryImpl(
                 //get pokemons species
                 val pokemonSpeciesRemote = apiService.getPokemonSpecies(pokemonRemote.name).body()
                     ?: return@withContext null
-/*                //save each ability of this pokemon
+                //save each ability of this pokemon
                 pokemonRemote.abilities?.forEach { ability ->
-                    //TODO save abilities
+                    abilityRepository.getAbilityFromPokemon(ability.ability.name, pokemonRemote.id)
                 }
                 //save each move of this pokemon
                 pokemonRemote.moves?.forEach { move ->
@@ -73,12 +77,12 @@ class PokemonRepositoryImpl(
                 }
                 //save each type of this pokemon
                 pokemonRemote.types.forEach { type ->
-                    //TODO save type
+                    typeRepository.getTypeFromPokemon(type.type.name, pokemonRemote.id)
                 }
                 //save each stat of this pokemon
                 pokemonRemote.stats?.forEach { stat ->
                     //TODO save stat
-                }*/
+                }
                 //return generation
                 val dbMapPokemon = pokemonRemote.mapToRoomEntity(pokemonSpeciesRemote)
                 pokemonDao.insertPokemon(dbMapPokemon)

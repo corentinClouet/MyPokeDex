@@ -39,4 +39,10 @@ interface ApiService {
 
     @GET("pokemon-species/{name}")
     suspend fun getPokemonSpecies(@Path("name") name: String): Response<PokemonSpeciesRemote?>
+
+    @GET("type/{name}")
+    suspend fun getTypeByName(@Path("name") name: String): Response<TypeRemote?>
+
+    @GET("type/{id}")
+    suspend fun getTypeById(@Path("id") id: Int): Response<TypeRemote?>
 }
