@@ -1,11 +1,7 @@
 package com.coreclouet.data.di
 
-import com.coreclouet.data.repositoryimpl.GenerationRepositoryImpl
-import com.coreclouet.data.repositoryimpl.VersionGroupRepositoryImpl
-import com.coreclouet.data.repositoryimpl.VersionRepositoryImpl
-import com.coreclouet.domain.repository.GenerationRepository
-import com.coreclouet.domain.repository.VersionGroupRepository
-import com.coreclouet.domain.repository.VersionRepository
+import com.coreclouet.data.repositoryimpl.*
+import com.coreclouet.domain.repository.*
 import org.koin.dsl.module
 
 val repositoryModule = module {
@@ -24,4 +20,7 @@ val repositoryModule = module {
         )
     }
     factory<VersionRepository> { VersionRepositoryImpl(apiService = get(), versionDao = get()) }
+    factory<AbilityRepository> { AbilityRepositoryImpl(apiService = get(), abilityDao = get()) }
+    factory<PokemonRepository> { PokemonRepositoryImpl(apiService = get(), pokemonDao = get()) }
+
 }

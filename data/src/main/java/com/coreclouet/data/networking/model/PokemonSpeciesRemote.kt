@@ -11,7 +11,7 @@ data class PokemonSpeciesRemote(
 	val genera: List<PsGeneraItem>? = null,
 
 	@field:SerializedName("habitat")
-	val habitat: PsHabitat? = null,
+	val habitat: PsHabitat,
 
 	@field:SerializedName("color")
 	val color: PsColor? = null,
@@ -20,7 +20,7 @@ data class PokemonSpeciesRemote(
 	val eggGroups: List<PsEggGroupsItem>? = null,
 
 	@field:SerializedName("capture_rate")
-	val captureRate: Int? = null,
+	val captureRate: Int,
 
 	@field:SerializedName("pokedex_numbers")
 	val pokedexNumbers: List<PsPokedexNumbersItem>? = null,
@@ -29,7 +29,7 @@ data class PokemonSpeciesRemote(
 	val formsSwitchable: Boolean? = null,
 
 	@field:SerializedName("growth_rate")
-	val growthRate: PsGrowthRate? = null,
+	val growthRate: PsGrowthRate,
 
 	@field:SerializedName("flavor_text_entries")
 	val flavorTextEntries: List<PsFlavorTextEntriesItem>? = null,
@@ -44,7 +44,7 @@ data class PokemonSpeciesRemote(
 	val order: Int,
 
 	@field:SerializedName("generation")
-	val generation: PsGeneration? = null,
+	val generation: PsGeneration,
 
 	@field:SerializedName("is_legendary")
 	val isLegendary: Boolean,
@@ -53,10 +53,10 @@ data class PokemonSpeciesRemote(
 	val palParkEncounters: List<PsPalParkEncountersItem>? = null,
 
 	@field:SerializedName("shape")
-	val shape: PsShape? = null,
+	val shape: PsShape,
 
 	@field:SerializedName("is_mythical")
-	val isMythical: Boolean? = null,
+	val isMythical: Boolean,
 
 	@field:SerializedName("base_happiness")
 	val baseHappiness: Int? = null,
@@ -68,7 +68,7 @@ data class PokemonSpeciesRemote(
 	val varieties: List<PsVarietiesItem>? = null,
 
 	@field:SerializedName("gender_rate")
-	val genderRate: Int? = null,
+	val genderRate: Int,
 
 	@field:SerializedName("name")
 	val name: String,

@@ -11,6 +11,9 @@ interface PokemonDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPokemon(pokemonEntity: PokemonEntity)
 
+    @Query("SELECT pokemonName FROM $POKEMON_TABLE_NAME")
+    suspend fun getPokemonsNames(): List<String>?
+
     @Query("SELECT * FROM $POKEMON_TABLE_NAME")
     suspend fun getPokemons(): List<PokemonEntity>?
 
@@ -22,9 +25,13 @@ interface PokemonDao {
 
     @Transaction
     @Query("SELECT * FROM $POKEMON_TABLE_NAME")
-    fun getPokemonsWithAll(): List<PokemonWithAllEntity>
+    suspend fun getPokemonsWithAll(): List<PokemonWithAllEntity>?
 
     @Transaction
     @Query("SELECT * FROM $POKEMON_TABLE_NAME WHERE pokemonId=:pokemonId")
-    fun getPokemonWithAll(pokemonId: Int): List<PokemonWithAllEntity>
+    suspend fun getPokemonWithAll(pokemonId: Int): PokemonWithAllEntity?
+
+    @Transaction
+    @Query("SELECT * FROM $POKEMON_TABLE_NAME WHERE pokemonName=:pokemonName")
+    suspend fun getPokemonWithAll(pokemonName: String): PokemonWithAllEntity?
 }

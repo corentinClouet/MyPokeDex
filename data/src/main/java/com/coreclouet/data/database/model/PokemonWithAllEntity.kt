@@ -23,7 +23,7 @@ data class PokemonWithAllEntity(
         parentColumn = "pokemonId",
         entityColumn = "pokemonOwnerId"
     )
-    val statEntity: StatEntity,
+    val statEntity: StatEntity?,
     @Relation(
         parentColumn = "pokemonId",
         entityColumn = "typeId",
@@ -43,7 +43,7 @@ data class PokemonWithAllEntity(
             order = pokemonEntity.order,
             defaultSprite = pokemonEntity.defaultSprite,
             officialSprite = pokemonEntity.officialSprite,
-            stat = statEntity.mapToDomain(),
+            stat = statEntity?.mapToDomain(),
             types = typesEntity?.map { it.mapToDomain() },
             weight = pokemonEntity.weight,
             captureRate = pokemonEntity.captureRate,

@@ -1,5 +1,7 @@
 package com.coreclouet.data.networking.model
 
+import com.coreclouet.data.database.UNKN0WN_DESCRIPTION
+import com.coreclouet.data.database.model.PokemonEntity
 import com.google.gson.annotations.SerializedName
 
 data class PokemonRemote(
@@ -57,7 +59,31 @@ data class PokemonRemote(
 
 	@field:SerializedName("order")
 	val order: Int
-)
+) {
+	fun mapToRoomEntity(pokemonSpeciesRemote: PokemonSpeciesRemote): PokemonEntity {
+		return PokemonEntity(
+			pokemonId = this.id,
+			pokemonName = this.name,
+			baseXp = this.baseExperience,
+			height = this.height,
+			order = this.order,
+			defaultSprite = this.sprites.frontDefault,
+			officialSprite = this.sprites.other.officialArtwork.frontDefault,
+			weight = this.weight,
+			captureRate = pokemonSpeciesRemote.captureRate,
+			description = pokemonSpeciesRemote.flavorTextEntries?.get(0)?.flavorText ?: UNKN0WN_DESCRIPTION,
+			genderRate =  pokemonSpeciesRemote.genderRate,
+			generationName = pokemonSpeciesRemote.generation.name,
+			growthRateName = pokemonSpeciesRemote.growthRate.name,
+			habitatName = pokemonSpeciesRemote.habitat.name,
+			genderDifference =  pokemonSpeciesRemote.hasGenderDifferences,
+			isBaby = pokemonSpeciesRemote.isBaby,
+			isLegendary = pokemonSpeciesRemote.isLegendary,
+			isMythical = pokemonSpeciesRemote.isMythical,
+			shapeName = pokemonSpeciesRemote.shape.name
+		)
+	}
+}
 
 data class PkMove(
 
@@ -446,7 +472,7 @@ data class PkGenerationIii(
 data class PkOfficialArtwork(
 
 	@field:SerializedName("front_default")
-	val frontDefault: String? = null
+	val frontDefault: String
 )
 
 data class PkFireredLeafgreen(
@@ -590,7 +616,7 @@ data class PkSprites(
 	val backFemale: Any? = null,
 
 	@field:SerializedName("other")
-	val other: PkOther? = null,
+	val other: PkOther,
 
 	@field:SerializedName("back_default")
 	val backDefault: String? = null,
@@ -599,7 +625,7 @@ data class PkSprites(
 	val frontShinyFemale: Any? = null,
 
 	@field:SerializedName("front_default")
-	val frontDefault: String? = null,
+	val frontDefault: String,
 
 	@field:SerializedName("versions")
 	val versions: PkVersions? = null,
