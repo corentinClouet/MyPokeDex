@@ -13,7 +13,7 @@ private const val BASE_URL = "https://pokeapi.co/api/v2/"
 
 val networkingModule = module {
     single { GsonConverterFactory.create() as Converter.Factory }
-    single { HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY) as Interceptor }
+    single { HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)}
     single { OkHttpClient.Builder().build() }
     single {
         Retrofit.Builder()

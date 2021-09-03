@@ -24,4 +24,10 @@ interface ApiService {
 
     @GET("generation/{name}")
     suspend fun getGenerationByName(@Path("name") name: String): Response<GenerationRemote?>
+
+    @GET("ability/{name}")
+    suspend fun getAbilityByName(@Path("name") name: String): Response<AbilityRemote?>
+
+    @GET("ability/{id}")
+    suspend fun getAbilityById(@Path("id") id: Int): Response<AbilityRemote?>
 }

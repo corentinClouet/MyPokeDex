@@ -8,14 +8,14 @@ import com.coreclouet.domain.model.Generation
 @Entity(tableName = GENERATION_TABLE_NAME)
 data class GenerationEntity(
     @PrimaryKey
-    val id: Int,
-    val name: String,
+    val generationId: Int,
+    val generationName: String,
     val mainRegionName: String
 ) {
     fun mapToDomain(): Generation {
         return Generation(
-            id = this.id,
-            name = this.name,
+            id = this.generationId,
+            name = this.generationName,
             mainRegionName = this.mainRegionName
         )
     }

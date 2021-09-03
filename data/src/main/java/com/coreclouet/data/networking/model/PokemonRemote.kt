@@ -5,70 +5,70 @@ import com.google.gson.annotations.SerializedName
 data class PokemonRemote(
 
 	@field:SerializedName("location_area_encounters")
-	val locationAreaEncounters: String? = null,
+	val locationAreaEncounters: String,
 
 	@field:SerializedName("types")
-	val types: List<TypesItem?>? = null,
+	val types: List<PkTypesItem>,
 
 	@field:SerializedName("base_experience")
-	val baseExperience: Int? = null,
+	val baseExperience: Int,
 
 	@field:SerializedName("held_items")
 	val heldItems: List<Any?>? = null,
 
 	@field:SerializedName("weight")
-	val weight: Int? = null,
+	val weight: Int,
 
 	@field:SerializedName("is_default")
-	val isDefault: Boolean? = null,
+	val isDefault: Boolean,
 
 	@field:SerializedName("past_types")
 	val pastTypes: List<Any?>? = null,
 
 	@field:SerializedName("sprites")
-	val sprites: Sprites? = null,
+	val sprites: PkSprites,
 
 	@field:SerializedName("abilities")
-	val abilities: List<AbilitiesItem?>? = null,
+	val abilities: List<PkAbilitiesItem>? = null,
 
 	@field:SerializedName("game_indices")
-	val gameIndices: List<GameIndicesItem?>? = null,
+	val gameIndices: List<PkGameIndicesItem>? = null,
 
 	@field:SerializedName("species")
-	val species: Species? = null,
+	val species: PkSpecies,
 
 	@field:SerializedName("stats")
-	val stats: List<StatsItem?>? = null,
+	val stats: List<PkStatsItem>? = null,
 
 	@field:SerializedName("moves")
-	val moves: List<MovesItem?>? = null,
+	val moves: List<PkMovesItem>? = null,
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
 	@field:SerializedName("id")
-	val id: Int? = null,
+	val id: Int,
 
 	@field:SerializedName("forms")
-	val forms: List<FormsItem?>? = null,
+	val forms: List<PkFormsItem>? = null,
 
 	@field:SerializedName("height")
-	val height: Int? = null,
+	val height: Int,
 
 	@field:SerializedName("order")
-	val order: Int? = null
+	val order: Int
 )
 
-data class Move(
+data class PkMove(
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
 	@field:SerializedName("url")
-	val url: String? = null
+	val url: String
 )
 
-data class DreamWorld(
+data class PkDreamWorld(
 
 	@field:SerializedName("front_default")
 	val frontDefault: String? = null,
@@ -77,16 +77,16 @@ data class DreamWorld(
 	val frontFemale: Any? = null
 )
 
-data class Other(
+data class PkOther(
 
 	@field:SerializedName("dream_world")
-	val dreamWorld: DreamWorld? = null,
+	val dreamWorld: PkDreamWorld? = null,
 
 	@field:SerializedName("official-artwork")
-	val officialArtwork: OfficialArtwork? = null
+	val officialArtwork: PkOfficialArtwork
 )
 
-data class HeartgoldSoulsilver(
+data class PkHeartgoldSoulsilver(
 
 	@field:SerializedName("back_shiny_female")
 	val backShinyFemale: Any? = null,
@@ -113,7 +113,7 @@ data class HeartgoldSoulsilver(
 	val frontShiny: String? = null
 )
 
-data class BlackWhite(
+data class PkBlackWhite(
 
 	@field:SerializedName("back_shiny_female")
 	val backShinyFemale: Any? = null,
@@ -131,7 +131,7 @@ data class BlackWhite(
 	val frontDefault: String? = null,
 
 	@field:SerializedName("animated")
-	val animated: Animated? = null,
+	val animated: PkAnimated? = null,
 
 	@field:SerializedName("front_female")
 	val frontFemale: Any? = null,
@@ -143,100 +143,100 @@ data class BlackWhite(
 	val frontShiny: String? = null
 )
 
-data class VersionGroupDetailsItem(
+data class PkVersionGroupDetailsItem(
 
 	@field:SerializedName("level_learned_at")
 	val levelLearnedAt: Int? = null,
 
 	@field:SerializedName("version_group")
-	val versionGroup: PokemonVersionGroup? = null,
+	val versionGroup: PkPokemonVersionGroup? = null,
 
 	@field:SerializedName("move_learn_method")
-	val moveLearnMethod: MoveLearnMethod? = null
+	val moveLearnMethod: PkMoveLearnMethod? = null
 )
 
-data class GenerationIv(
+data class PkGenerationIv(
 
 	@field:SerializedName("platinum")
-	val platinum: Platinum? = null,
+	val platinum: PkPlatinum? = null,
 
 	@field:SerializedName("diamond-pearl")
-	val diamondPearl: DiamondPearl? = null,
+	val diamondPearl: PkDiamondPearl? = null,
 
 	@field:SerializedName("heartgold-soulsilver")
-	val heartgoldSoulsilver: HeartgoldSoulsilver? = null
+	val heartgoldSoulsilver: PkHeartgoldSoulsilver? = null
 )
 
-data class GenerationI(
+data class PkGenerationI(
 
 	@field:SerializedName("yellow")
-	val yellow: Yellow? = null,
+	val yellow: PkYellow? = null,
 
 	@field:SerializedName("red-blue")
-	val redBlue: RedBlue? = null
+	val redBlue: PkRedBlue? = null
 )
 
-data class TypesItem(
+data class PkTypesItem(
 
 	@field:SerializedName("slot")
-	val slot: Int? = null,
+	val slot: Int,
 
 	@field:SerializedName("type")
-	val type: Type? = null
+	val type: PkType
 )
 
-data class FormsItem(
+data class PkFormsItem(
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
 	@field:SerializedName("url")
-	val url: String? = null
+	val url: String
 )
 
-data class MoveLearnMethod(
+data class PkMoveLearnMethod(
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
 	@field:SerializedName("url")
-	val url: String? = null
+	val url: String
 )
 
-data class Versions(
+data class PkVersions(
 
 	@field:SerializedName("generation-iii")
-	val generationIii: GenerationIii? = null,
+	val generationIii: PkGenerationIii? = null,
 
 	@field:SerializedName("generation-ii")
-	val generationIi: GenerationIi? = null,
+	val generationIi: PkGenerationIi? = null,
 
 	@field:SerializedName("generation-v")
-	val generationV: GenerationV? = null,
+	val generationV: PkGenerationV? = null,
 
 	@field:SerializedName("generation-iv")
-	val generationIv: GenerationIv? = null,
+	val generationIv: PkGenerationIv? = null,
 
 	@field:SerializedName("generation-vii")
-	val generationVii: GenerationVii? = null,
+	val generationVii: PkGenerationVii? = null,
 
 	@field:SerializedName("generation-i")
-	val generationI: GenerationI? = null,
+	val generationI: PkGenerationI? = null,
 
 	@field:SerializedName("generation-viii")
-	val generationViii: GenerationViii? = null,
+	val generationViii: PkGenerationViii? = null,
 
 	@field:SerializedName("generation-vi")
-	val generationVi: GenerationVi? = null
+	val generationVi: PkGenerationVi? = null
 )
 
-data class GenerationV(
+data class PkGenerationV(
 
 	@field:SerializedName("black-white")
-	val blackWhite: BlackWhite? = null
+	val blackWhite: PkBlackWhite? = null
 )
 
-data class RedBlue(
+data class PkRedBlue(
 
 	@field:SerializedName("front_gray")
 	val frontGray: String? = null,
@@ -251,7 +251,7 @@ data class RedBlue(
 	val frontDefault: String? = null
 )
 
-data class XY(
+data class PkXY(
 
 	@field:SerializedName("front_shiny_female")
 	val frontShinyFemale: Any? = null,
@@ -266,7 +266,7 @@ data class XY(
 	val frontShiny: String? = null
 )
 
-data class Gold(
+data class PkGold(
 
 	@field:SerializedName("back_default")
 	val backDefault: String? = null,
@@ -281,7 +281,7 @@ data class Gold(
 	val frontShiny: String? = null
 )
 
-data class Animated(
+data class PkAnimated(
 
 	@field:SerializedName("back_shiny_female")
 	val backShinyFemale: Any? = null,
@@ -308,16 +308,16 @@ data class Animated(
 	val frontShiny: String? = null
 )
 
-data class GenerationVii(
+data class PkGenerationVii(
 
 	@field:SerializedName("icons")
-	val icons: Icons? = null,
+	val icons: PkIcons? = null,
 
 	@field:SerializedName("ultra-sun-ultra-moon")
-	val ultraSunUltraMoon: UltraSunUltraMoon? = null
+	val ultraSunUltraMoon: PkUltraSunUltraMoon? = null
 )
 
-data class UltraSunUltraMoon(
+data class PkUltraSunUltraMoon(
 
 	@field:SerializedName("front_shiny_female")
 	val frontShinyFemale: Any? = null,
@@ -332,82 +332,82 @@ data class UltraSunUltraMoon(
 	val frontShiny: String? = null
 )
 
-data class Ability(
+data class PkAbility(
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
 	@field:SerializedName("url")
-	val url: String? = null
+	val url: String
 )
 
-data class GenerationIi(
+data class PkGenerationIi(
 
 	@field:SerializedName("gold")
-	val gold: Gold? = null,
+	val gold: PkGold? = null,
 
 	@field:SerializedName("crystal")
-	val crystal: Crystal? = null,
+	val crystal: PkCrystal? = null,
 
 	@field:SerializedName("silver")
-	val silver: Silver? = null
+	val silver: PkSilver? = null
 )
 
-data class Version(
+data class PkVersion(
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
 	@field:SerializedName("url")
-	val url: String? = null
+	val url: String
 )
 
-data class GameIndicesItem(
+data class PkGameIndicesItem(
 
 	@field:SerializedName("game_index")
-	val gameIndex: Int? = null,
+	val gameIndex: Int,
 
 	@field:SerializedName("version")
-	val version: Version? = null
+	val version: PkVersion
 )
 
-data class GenerationViii(
+data class PkGenerationViii(
 
 	@field:SerializedName("icons")
-	val icons: Icons? = null
+	val icons: PkIcons? = null
 )
 
-data class PokemonVersionGroup(
+data class PkPokemonVersionGroup(
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
 	@field:SerializedName("url")
-	val url: String? = null
+	val url: String
 )
 
-data class Species(
+data class PkSpecies(
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
 	@field:SerializedName("url")
-	val url: String? = null
+	val url: String
 )
 
-data class AbilitiesItem(
+data class PkAbilitiesItem(
 
 	@field:SerializedName("is_hidden")
-	val isHidden: Boolean? = null,
+	val isHidden: Boolean,
 
 	@field:SerializedName("ability")
-	val ability: Ability? = null,
+	val ability: PkAbility? = null,
 
 	@field:SerializedName("slot")
-	val slot: Int? = null
+	val slot: Int
 )
 
-data class Silver(
+data class PkSilver(
 
 	@field:SerializedName("back_default")
 	val backDefault: String? = null,
@@ -422,34 +422,34 @@ data class Silver(
 	val frontShiny: String? = null
 )
 
-data class Stat(
+data class PkStat(
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
 	@field:SerializedName("url")
-	val url: String? = null
+	val url: String
 )
 
-data class GenerationIii(
+data class PkGenerationIii(
 
 	@field:SerializedName("firered-leafgreen")
-	val fireredLeafgreen: FireredLeafgreen? = null,
+	val fireredLeafgreen: PkFireredLeafgreen? = null,
 
 	@field:SerializedName("ruby-sapphire")
-	val rubySapphire: RubySapphire? = null,
+	val rubySapphire: PkRubySapphire? = null,
 
 	@field:SerializedName("emerald")
-	val emerald: Emerald? = null
+	val emerald: PkEmerald? = null
 )
 
-data class OfficialArtwork(
+data class PkOfficialArtwork(
 
 	@field:SerializedName("front_default")
 	val frontDefault: String? = null
 )
 
-data class FireredLeafgreen(
+data class PkFireredLeafgreen(
 
 	@field:SerializedName("back_default")
 	val backDefault: String? = null,
@@ -464,7 +464,7 @@ data class FireredLeafgreen(
 	val frontShiny: String? = null
 )
 
-data class Emerald(
+data class PkEmerald(
 
 	@field:SerializedName("front_default")
 	val frontDefault: String? = null,
@@ -473,19 +473,19 @@ data class Emerald(
 	val frontShiny: String? = null
 )
 
-data class StatsItem(
+data class PkStatsItem(
 
 	@field:SerializedName("stat")
-	val stat: Stat? = null,
+	val stat: PkStat,
 
 	@field:SerializedName("base_stat")
-	val baseStat: Int? = null,
+	val baseStat: Int,
 
 	@field:SerializedName("effort")
-	val effort: Int? = null
+	val effort: Int
 )
 
-data class OmegarubyAlphasapphire(
+data class PkOmegarubyAlphasapphire(
 
 	@field:SerializedName("front_shiny_female")
 	val frontShinyFemale: Any? = null,
@@ -500,7 +500,7 @@ data class OmegarubyAlphasapphire(
 	val frontShiny: String? = null
 )
 
-data class DiamondPearl(
+data class PkDiamondPearl(
 
 	@field:SerializedName("back_shiny_female")
 	val backShinyFemale: Any? = null,
@@ -527,7 +527,7 @@ data class DiamondPearl(
 	val frontShiny: String? = null
 )
 
-data class Platinum(
+data class PkPlatinum(
 
 	@field:SerializedName("back_shiny_female")
 	val backShinyFemale: Any? = null,
@@ -554,34 +554,34 @@ data class Platinum(
 	val frontShiny: String? = null
 )
 
-data class Type(
+data class PkType(
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
 	@field:SerializedName("url")
-	val url: String? = null
+	val url: String
 )
 
-data class GenerationVi(
+data class PkGenerationVi(
 
 	@field:SerializedName("omegaruby-alphasapphire")
-	val omegarubyAlphasapphire: OmegarubyAlphasapphire? = null,
+	val omegarubyAlphasapphire: PkOmegarubyAlphasapphire? = null,
 
 	@field:SerializedName("x-y")
-	val xY: XY? = null
+	val xY: PkXY? = null
 )
 
-data class MovesItem(
+data class PkMovesItem(
 
 	@field:SerializedName("version_group_details")
-	val versionGroupDetails: List<VersionGroupDetailsItem?>? = null,
+	val versionGroupDetails: List<PkVersionGroupDetailsItem?>? = null,
 
 	@field:SerializedName("move")
-	val move: Move? = null
+	val move: PkMove? = null
 )
 
-data class Sprites(
+data class PkSprites(
 
 	@field:SerializedName("back_shiny_female")
 	val backShinyFemale: Any? = null,
@@ -590,7 +590,7 @@ data class Sprites(
 	val backFemale: Any? = null,
 
 	@field:SerializedName("other")
-	val other: Other? = null,
+	val other: PkOther? = null,
 
 	@field:SerializedName("back_default")
 	val backDefault: String? = null,
@@ -602,7 +602,7 @@ data class Sprites(
 	val frontDefault: String? = null,
 
 	@field:SerializedName("versions")
-	val versions: Versions? = null,
+	val versions: PkVersions? = null,
 
 	@field:SerializedName("front_female")
 	val frontFemale: Any? = null,
@@ -614,7 +614,7 @@ data class Sprites(
 	val frontShiny: String? = null
 )
 
-data class Yellow(
+data class PkYellow(
 
 	@field:SerializedName("front_gray")
 	val frontGray: String? = null,
@@ -629,7 +629,7 @@ data class Yellow(
 	val frontDefault: String? = null
 )
 
-data class Crystal(
+data class PkCrystal(
 
 	@field:SerializedName("back_default")
 	val backDefault: String? = null,
@@ -644,7 +644,7 @@ data class Crystal(
 	val frontShiny: String? = null
 )
 
-data class RubySapphire(
+data class PkRubySapphire(
 
 	@field:SerializedName("back_default")
 	val backDefault: String? = null,
@@ -659,7 +659,7 @@ data class RubySapphire(
 	val frontShiny: String? = null
 )
 
-data class Icons(
+data class PkIcons(
 
 	@field:SerializedName("front_default")
 	val frontDefault: String? = null,

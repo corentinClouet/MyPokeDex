@@ -14,13 +14,13 @@ interface VersionGroupDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertVersionGroup(versionGroupEntity: VersionGroupEntity)
 
-    @Query("SELECT name FROM $VERSION_GROUP_TABLE_NAME")
+    @Query("SELECT versionGroupName FROM $VERSION_GROUP_TABLE_NAME")
     suspend fun getVersionsGroupsNames(): List<String>?
 
     @Query("SELECT * FROM $VERSION_GROUP_TABLE_NAME")
     suspend fun getVersionsGroups(): List<VersionGroupEntity>?
 
-    @Query("SELECT * FROM $VERSION_GROUP_TABLE_NAME WHERE name=:name")
+    @Query("SELECT * FROM $VERSION_GROUP_TABLE_NAME WHERE versionGroupName=:name")
     suspend fun getVersionGroup(name: String): VersionGroupEntity?
 
 }

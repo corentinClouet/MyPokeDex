@@ -16,12 +16,12 @@ interface VersionDao {
     @Query("SELECT * FROM $VERSION_TABLE_NAME")
     suspend fun getVersions(): List<VersionEntity>?
 
-    @Query("SELECT name FROM $VERSION_TABLE_NAME")
+    @Query("SELECT versionName FROM $VERSION_TABLE_NAME")
     suspend fun getVersionsNames(): List<String>?
 
-    @Query("SELECT * FROM $VERSION_TABLE_NAME WHERE name=:name")
+    @Query("SELECT * FROM $VERSION_TABLE_NAME WHERE versionName=:name")
     suspend fun getVersion(name: String): VersionEntity?
 
-    @Query("SELECT * FROM $VERSION_TABLE_NAME WHERE id=:id")
+    @Query("SELECT * FROM $VERSION_TABLE_NAME WHERE versionId=:id")
     suspend fun getVersion(id: Long): VersionEntity?
 }

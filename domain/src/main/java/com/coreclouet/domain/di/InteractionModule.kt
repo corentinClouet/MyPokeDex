@@ -10,4 +10,6 @@ val interactionModule = module {
   factory { GetVersionGroupUseCase(versionGroupRepository = get()) }
   factory { GetGenerationUseCase(generationRepository = get()) }
   factory { GetGenerationListUseCase(generationRepository = get()) }
+  factory { GetPokemonListUseCase(pokemonRepository = get()) }
+  factory { GetPokemonUseCase(pokemonRepository = get()) }
 }
