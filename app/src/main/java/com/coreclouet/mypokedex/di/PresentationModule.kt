@@ -9,10 +9,7 @@ import org.koin.dsl.module
 val presentationModule = module {
     viewModel {
         HomeFragmentViewModel(
-            getVersionListUseCase = get(),
-            getGenerationListUseCase = get(),
-            getVersionGroupListUseCase = get(),
-            getPokemonListUseCase = get()
+            getVersionListUseCase = get()
         )
     }
     viewModel { PokedexFragmentViewModel() }

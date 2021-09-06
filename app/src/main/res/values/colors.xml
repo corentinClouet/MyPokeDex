@@ -40,6 +40,10 @@
     <!--Home items colors-->
     <color name="home_item_text">#FFFFFF</color>
     <color name="home_pokedex_item">#5DBE62</color>
+    <color name="home_items_item">#58A9F4</color>
+    <color name="home_moves_item">#F7776A</color>
+    <color name="home_types_item">#B862CF</color>
+    <color name="home_favorites_item">#FFCE4B</color>
 
 
 </resources>

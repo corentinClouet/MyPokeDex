@@ -2,6 +2,10 @@
     <string name="app_name">MyPokeDex</string>
     <string name="home_title">What are \nyou looking for ?</string>
     <string name="pokedex">Pokédex</string>
+    <string name="items">Items</string>
+    <string name="moves">Moves</string>
+    <string name="types">Types</string>
+    <string name="favorites">Favorites</string>
     <string name="pokemon">Pokémon</string>
     <string name="filter">Filter</string>
     <string name="display_mode">Display mode</string>
