@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 data class VersionRemote(
 
 	@field:SerializedName("names")
-	val names: List<NamesItem>? = null,
+	val names: List<VersionNamesItem>? = null,
 
 	@field:SerializedName("version_group")
 	val versionGroup: VersionGroup,
@@ -19,8 +19,8 @@ data class VersionRemote(
 ) {
 	fun mapToRoomEntity(): VersionEntity {
 		return VersionEntity(
-			id = this.id,
-			name = this.name,
+			versionId = this.id,
+			versionName = this.name,
 			versionGroupName = this.versionGroup.name
 		)
 	}
@@ -33,4 +33,13 @@ data class VersionGroup(
 
 	@field:SerializedName("url")
 	val url: String
+)
+
+data class VersionNamesItem(
+
+	@field:SerializedName("name")
+	val name: String,
+
+	@field:SerializedName("language")
+	val language: AbLanguage
 )

@@ -11,7 +11,8 @@ val presentationModule = module {
         HomeFragmentViewModel(
             getVersionListUseCase = get(),
             getGenerationListUseCase = get(),
-            getVersionGroupListUseCase = get()
+            getVersionGroupListUseCase = get(),
+            getPokemonListUseCase = get()
         )
     }
     viewModel { PokedexFragmentViewModel() }

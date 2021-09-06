@@ -5,76 +5,76 @@ import com.google.gson.annotations.SerializedName
 data class PokemonSpeciesRemote(
 
 	@field:SerializedName("evolution_chain")
-	val evolutionChain: EvolutionChain? = null,
+	val evolutionChain: PsEvolutionChain? = null,
 
 	@field:SerializedName("genera")
-	val genera: List<GeneraItem?>? = null,
+	val genera: List<PsGeneraItem>? = null,
 
 	@field:SerializedName("habitat")
-	val habitat: Habitat? = null,
+	val habitat: PsHabitat,
 
 	@field:SerializedName("color")
-	val color: Color? = null,
+	val color: PsColor? = null,
 
 	@field:SerializedName("egg_groups")
-	val eggGroups: List<EggGroupsItem?>? = null,
+	val eggGroups: List<PsEggGroupsItem>? = null,
 
 	@field:SerializedName("capture_rate")
-	val captureRate: Int? = null,
+	val captureRate: Int,
 
 	@field:SerializedName("pokedex_numbers")
-	val pokedexNumbers: List<PokedexNumbersItem?>? = null,
+	val pokedexNumbers: List<PsPokedexNumbersItem>? = null,
 
 	@field:SerializedName("forms_switchable")
 	val formsSwitchable: Boolean? = null,
 
 	@field:SerializedName("growth_rate")
-	val growthRate: GrowthRate? = null,
+	val growthRate: PsGrowthRate,
 
 	@field:SerializedName("flavor_text_entries")
-	val flavorTextEntries: List<FlavorTextEntriesItem?>? = null,
+	val flavorTextEntries: List<PsFlavorTextEntriesItem>? = null,
 
 	@field:SerializedName("id")
-	val id: Int? = null,
+	val id: Int,
 
 	@field:SerializedName("is_baby")
-	val isBaby: Boolean? = null,
+	val isBaby: Boolean,
 
 	@field:SerializedName("order")
-	val order: Int? = null,
+	val order: Int,
 
 	@field:SerializedName("generation")
-	val generation: Generation? = null,
+	val generation: PsGeneration,
 
 	@field:SerializedName("is_legendary")
-	val isLegendary: Boolean? = null,
+	val isLegendary: Boolean,
 
 	@field:SerializedName("pal_park_encounters")
-	val palParkEncounters: List<PalParkEncountersItem?>? = null,
+	val palParkEncounters: List<PsPalParkEncountersItem>? = null,
 
 	@field:SerializedName("shape")
-	val shape: Shape? = null,
+	val shape: PsShape,
 
 	@field:SerializedName("is_mythical")
-	val isMythical: Boolean? = null,
+	val isMythical: Boolean,
 
 	@field:SerializedName("base_happiness")
 	val baseHappiness: Int? = null,
 
 	@field:SerializedName("names")
-	val names: List<NamesItem?>? = null,
+	val names: List<PsNamesItem>? = null,
 
 	@field:SerializedName("varieties")
-	val varieties: List<VarietiesItem?>? = null,
+	val varieties: List<PsVarietiesItem>? = null,
 
 	@field:SerializedName("gender_rate")
-	val genderRate: Int? = null,
+	val genderRate: Int,
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
 	@field:SerializedName("has_gender_differences")
-	val hasGenderDifferences: Boolean? = null,
+	val hasGenderDifferences: Boolean,
 
 	@field:SerializedName("hatch_counter")
 	val hatchCounter: Int? = null,
@@ -86,112 +86,112 @@ data class PokemonSpeciesRemote(
 	val evolvesFromSpecies: Any? = null
 )
 
-data class Habitat(
+data class PsHabitat(
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
 	@field:SerializedName("url")
-	val url: String? = null
+	val url: String
 )
 
-data class Pokedex(
+data class PsPokedex(
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
 	@field:SerializedName("url")
-	val url: String? = null
+	val url: String
 )
 
-data class GrowthRate(
+data class PsGrowthRate(
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
 	@field:SerializedName("url")
-	val url: String? = null
+	val url: String
 )
 
-data class Generation(
+data class PsGeneration(
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
 	@field:SerializedName("url")
-	val url: String? = null
+	val url: String
 )
 
-data class Area(
+data class PsArea(
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
 	@field:SerializedName("url")
-	val url: String? = null
+	val url: String
 )
 
-data class VarietiesItem(
+data class PsVarietiesItem(
 
 	@field:SerializedName("pokemon")
-	val pokemon: Pokemon? = null,
+	val pokemon: PsPokemon? = null,
 
 	@field:SerializedName("is_default")
 	val isDefault: Boolean? = null
 )
 
-data class PokedexNumbersItem(
+data class PsPokedexNumbersItem(
 
 	@field:SerializedName("entry_number")
 	val entryNumber: Int? = null,
 
 	@field:SerializedName("pokedex")
-	val pokedex: Pokedex? = null
+	val pokedex: PsPokedex? = null
 )
 
-data class NamesItem(
+data class PsNamesItem(
 
 	@field:SerializedName("name")
 	val name: String? = null,
 
 	@field:SerializedName("language")
-	val language: Language? = null
+	val language: PsLanguage? = null
 )
 
-data class GeneraItem(
+data class PsGeneraItem(
 
 	@field:SerializedName("genus")
 	val genus: String? = null,
 
 	@field:SerializedName("language")
-	val language: Language? = null
+	val language: PsLanguage? = null
 )
 
-data class Pokemon(
+data class PsPokemon(
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
 	@field:SerializedName("url")
-	val url: String? = null
+	val url: String
 )
 
-data class FlavorTextEntriesItem(
+data class PsFlavorTextEntriesItem(
 
 	@field:SerializedName("language")
-	val language: Language? = null,
+	val language: PsLanguage? = null,
 
 	@field:SerializedName("version")
-	val version: Version? = null,
+	val version: PsVersion? = null,
 
 	@field:SerializedName("flavor_text")
 	val flavorText: String? = null
 )
 
-data class PalParkEncountersItem(
+data class PsPalParkEncountersItem(
 
 	@field:SerializedName("area")
-	val area: Area? = null,
+	val area: PsArea? = null,
 
 	@field:SerializedName("base_score")
 	val baseScore: Int? = null,
@@ -200,44 +200,53 @@ data class PalParkEncountersItem(
 	val rate: Int? = null
 )
 
-data class EvolutionChain(
+data class PsEvolutionChain(
 
 	@field:SerializedName("url")
 	val url: String? = null
 )
 
-data class Shape(
+data class PsShape(
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
 	@field:SerializedName("url")
-	val url: String? = null
+	val url: String
 )
 
-data class Color(
+data class PsColor(
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
 	@field:SerializedName("url")
-	val url: String? = null
+	val url: String
 )
 
-data class Language(
+data class PsLanguage(
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
 	@field:SerializedName("url")
-	val url: String? = null
+	val url: String
 )
 
-data class EggGroupsItem(
+data class PsEggGroupsItem(
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	val name: String,
 
 	@field:SerializedName("url")
-	val url: String? = null
+	val url: String
+)
+
+data class PsVersion(
+
+	@field:SerializedName("name")
+	val name: String,
+
+	@field:SerializedName("url")
+	val url: String
 )

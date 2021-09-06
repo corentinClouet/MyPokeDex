@@ -8,14 +8,14 @@ import com.coreclouet.domain.model.Version
 @Entity(tableName = VERSION_TABLE_NAME)
 data class VersionEntity(
     @PrimaryKey
-    val id: Int,
-    val name: String,
+    val versionId: Int,
+    val versionName: String,
     val versionGroupName: String
 ) {
     fun mapToDomain(): Version {
         return Version(
-            id = this.id,
-            name = this.name,
+            id = this.versionId,
+            name = this.versionName,
             versionGroupName = this.versionGroupName
         )
     }

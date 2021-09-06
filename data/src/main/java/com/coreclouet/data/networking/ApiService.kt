@@ -24,4 +24,34 @@ interface ApiService {
 
     @GET("generation/{name}")
     suspend fun getGenerationByName(@Path("name") name: String): Response<GenerationRemote?>
+
+    @GET("ability/{name}")
+    suspend fun getAbilityByName(@Path("name") name: String): Response<AbilityRemote?>
+
+    @GET("ability/{id}")
+    suspend fun getAbilityById(@Path("id") id: Int): Response<AbilityRemote?>
+
+    @GET("pokemon?limit=151&offset=0")
+    suspend fun getPokemons(): Response<PokemonListRemote?>
+
+    @GET("pokemon/{name}")
+    suspend fun getPokemonByName(@Path("name") name: String): Response<PokemonRemote?>
+
+    @GET("pokemon/{id}")
+    suspend fun getPokemonById(@Path("id") id: Int): Response<PokemonRemote?>
+
+    @GET("pokemon-species/{name}")
+    suspend fun getPokemonSpecies(@Path("name") name: String): Response<PokemonSpeciesRemote?>
+
+    @GET("type/{name}")
+    suspend fun getTypeByName(@Path("name") name: String): Response<TypeRemote?>
+
+    @GET("type/{id}")
+    suspend fun getTypeById(@Path("id") id: Int): Response<TypeRemote?>
+
+    @GET("move/{name}")
+    suspend fun getMoveByName(@Path("name") name: String): Response<MoveRemote?>
+
+    @GET("move/{id}")
+    suspend fun getMoveById(@Path("id") id: Int): Response<MoveRemote?>
 }

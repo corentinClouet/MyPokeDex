@@ -1,0 +1,654 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 3,
+    "identityHash": "d0719cfd3662342a6a2be72fb55cb303",
+    "entities": [
+      {
+        "tableName": "ability",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`abilityId` INTEGER NOT NULL, `abilityName` TEXT NOT NULL, `generationName` TEXT NOT NULL, `description` TEXT NOT NULL, `effect` TEXT NOT NULL, `shortEffect` TEXT, PRIMARY KEY(`abilityId`))",
+        "fields": [
+          {
+            "fieldPath": "abilityId",
+            "columnName": "abilityId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "abilityName",
+            "columnName": "abilityName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "generationName",
+            "columnName": "generationName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "effect",
+            "columnName": "effect",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "shortEffect",
+            "columnName": "shortEffect",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "abilityId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "generation",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`generationId` INTEGER NOT NULL, `generationName` TEXT NOT NULL, `mainRegionName` TEXT NOT NULL, PRIMARY KEY(`generationId`))",
+        "fields": [
+          {
+            "fieldPath": "generationId",
+            "columnName": "generationId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "generationName",
+            "columnName": "generationName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mainRegionName",
+            "columnName": "mainRegionName",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "generationId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "move",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`moveId` INTEGER NOT NULL, `moveName` TEXT NOT NULL, `accuracy` INTEGER NOT NULL, `contestTypeName` TEXT, `damageClassName` TEXT NOT NULL, `generationName` TEXT NOT NULL, `power` INTEGER NOT NULL, `pp` INTEGER NOT NULL, `targetName` TEXT NOT NULL, `typeName` TEXT NOT NULL, `ailmentName` TEXT NOT NULL, `ailmentChance` INTEGER NOT NULL, `category` TEXT NOT NULL, `criticalRate` INTEGER NOT NULL, `drain` INTEGER NOT NULL, `flinchChance` INTEGER NOT NULL, `healing` INTEGER NOT NULL, `statChance` INTEGER NOT NULL, PRIMARY KEY(`moveId`))",
+        "fields": [
+          {
+            "fieldPath": "moveId",
+            "columnName": "moveId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "moveName",
+            "columnName": "moveName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "accuracy",
+            "columnName": "accuracy",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "contestTypeName",
+            "columnName": "contestTypeName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "damageClassName",
+            "columnName": "damageClassName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "generationName",
+            "columnName": "generationName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "power",
+            "columnName": "power",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "pp",
+            "columnName": "pp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "targetName",
+            "columnName": "targetName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "typeName",
+            "columnName": "typeName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ailmentName",
+            "columnName": "ailmentName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ailmentChance",
+            "columnName": "ailmentChance",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "category",
+            "columnName": "category",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "criticalRate",
+            "columnName": "criticalRate",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "drain",
+            "columnName": "drain",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "flinchChance",
+            "columnName": "flinchChance",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "healing",
+            "columnName": "healing",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "statChance",
+            "columnName": "statChance",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "moveId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "pokemon_ability_cross_ref",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`pokemonId` INTEGER NOT NULL, `abilityId` INTEGER NOT NULL, PRIMARY KEY(`pokemonId`, `abilityId`))",
+        "fields": [
+          {
+            "fieldPath": "pokemonId",
+            "columnName": "pokemonId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "abilityId",
+            "columnName": "abilityId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "pokemonId",
+            "abilityId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_pokemon_ability_cross_ref_abilityId",
+            "unique": false,
+            "columnNames": [
+              "abilityId"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_pokemon_ability_cross_ref_abilityId` ON `${TABLE_NAME}` (`abilityId`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "pokemon",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`pokemonId` INTEGER NOT NULL, `pokemonName` TEXT NOT NULL, `baseXp` INTEGER NOT NULL, `height` INTEGER NOT NULL, `order` INTEGER NOT NULL, `defaultSprite` TEXT NOT NULL, `officialSprite` TEXT NOT NULL, `weight` INTEGER NOT NULL, `captureRate` INTEGER NOT NULL, `description` TEXT NOT NULL, `genderRate` INTEGER NOT NULL, `generationName` TEXT NOT NULL, `growthRateName` TEXT NOT NULL, `habitatName` TEXT NOT NULL, `genderDifference` INTEGER NOT NULL, `isBaby` INTEGER NOT NULL, `isLegendary` INTEGER NOT NULL, `isMythical` INTEGER NOT NULL, `shapeName` TEXT NOT NULL, PRIMARY KEY(`pokemonId`))",
+        "fields": [
+          {
+            "fieldPath": "pokemonId",
+            "columnName": "pokemonId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "pokemonName",
+            "columnName": "pokemonName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "baseXp",
+            "columnName": "baseXp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "height",
+            "columnName": "height",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "order",
+            "columnName": "order",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "defaultSprite",
+            "columnName": "defaultSprite",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "officialSprite",
+            "columnName": "officialSprite",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "weight",
+            "columnName": "weight",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "captureRate",
+            "columnName": "captureRate",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "genderRate",
+            "columnName": "genderRate",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "generationName",
+            "columnName": "generationName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "growthRateName",
+            "columnName": "growthRateName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "habitatName",
+            "columnName": "habitatName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "genderDifference",
+            "columnName": "genderDifference",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isBaby",
+            "columnName": "isBaby",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isLegendary",
+            "columnName": "isLegendary",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isMythical",
+            "columnName": "isMythical",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "shapeName",
+            "columnName": "shapeName",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "pokemonId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "pokemon_move_cross_ref",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`pokemonId` INTEGER NOT NULL, `moveId` INTEGER NOT NULL, PRIMARY KEY(`pokemonId`, `moveId`))",
+        "fields": [
+          {
+            "fieldPath": "pokemonId",
+            "columnName": "pokemonId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "moveId",
+            "columnName": "moveId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "pokemonId",
+            "moveId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_pokemon_move_cross_ref_moveId",
+            "unique": false,
+            "columnNames": [
+              "moveId"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_pokemon_move_cross_ref_moveId` ON `${TABLE_NAME}` (`moveId`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "pokemon_type_cross_ref",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`pokemonId` INTEGER NOT NULL, `typeId` INTEGER NOT NULL, PRIMARY KEY(`pokemonId`, `typeId`))",
+        "fields": [
+          {
+            "fieldPath": "pokemonId",
+            "columnName": "pokemonId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "typeId",
+            "columnName": "typeId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "pokemonId",
+            "typeId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_pokemon_type_cross_ref_typeId",
+            "unique": false,
+            "columnNames": [
+              "typeId"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_pokemon_type_cross_ref_typeId` ON `${TABLE_NAME}` (`typeId`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "stat",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`pokemonOwnerId` INTEGER NOT NULL, `hp` INTEGER NOT NULL, `attack` INTEGER NOT NULL, `defense` INTEGER NOT NULL, `speAttack` INTEGER NOT NULL, `speDefense` INTEGER NOT NULL, `speed` INTEGER NOT NULL, PRIMARY KEY(`pokemonOwnerId`))",
+        "fields": [
+          {
+            "fieldPath": "pokemonOwnerId",
+            "columnName": "pokemonOwnerId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hp",
+            "columnName": "hp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "attack",
+            "columnName": "attack",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "defense",
+            "columnName": "defense",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "speAttack",
+            "columnName": "speAttack",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "speDefense",
+            "columnName": "speDefense",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "speed",
+            "columnName": "speed",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "pokemonOwnerId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "type",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`typeId` INTEGER NOT NULL, `typeName` TEXT NOT NULL, `generationName` TEXT NOT NULL, `moveDamageClassName` TEXT, `doubleDamageFrom` TEXT, `doubleDamageTo` TEXT, `halfDamageFrom` TEXT, `halfDamageTo` TEXT, `noDamageFrom` TEXT, `noDamageTo` TEXT, PRIMARY KEY(`typeId`))",
+        "fields": [
+          {
+            "fieldPath": "typeId",
+            "columnName": "typeId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "typeName",
+            "columnName": "typeName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "generationName",
+            "columnName": "generationName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "moveDamageClassName",
+            "columnName": "moveDamageClassName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "doubleDamageFrom",
+            "columnName": "doubleDamageFrom",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "doubleDamageTo",
+            "columnName": "doubleDamageTo",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "halfDamageFrom",
+            "columnName": "halfDamageFrom",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "halfDamageTo",
+            "columnName": "halfDamageTo",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "noDamageFrom",
+            "columnName": "noDamageFrom",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "noDamageTo",
+            "columnName": "noDamageTo",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "typeId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "version",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`versionId` INTEGER NOT NULL, `versionName` TEXT NOT NULL, `versionGroupName` TEXT NOT NULL, PRIMARY KEY(`versionId`))",
+        "fields": [
+          {
+            "fieldPath": "versionId",
+            "columnName": "versionId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "versionName",
+            "columnName": "versionName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "versionGroupName",
+            "columnName": "versionGroupName",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "versionId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "version_group",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`versionGroupId` INTEGER NOT NULL, `versionGroupName` TEXT NOT NULL, `order` INTEGER NOT NULL, `generationName` TEXT NOT NULL, PRIMARY KEY(`versionGroupId`))",
+        "fields": [
+          {
+            "fieldPath": "versionGroupId",
+            "columnName": "versionGroupId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "versionGroupName",
+            "columnName": "versionGroupName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "order",
+            "columnName": "order",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "generationName",
+            "columnName": "generationName",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "versionGroupId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd0719cfd3662342a6a2be72fb55cb303')"
+    ]
+  }
+}

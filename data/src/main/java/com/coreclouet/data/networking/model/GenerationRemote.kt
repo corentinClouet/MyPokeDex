@@ -12,13 +12,13 @@ data class GenerationRemote(
 	val types: List<GenerationTypesItem>? = null,
 
 	@field:SerializedName("names")
-	val names: List<NamesItem>? = null,
+	val names: List<GenerationNamesItem>? = null,
 
 	@field:SerializedName("main_region")
-	val mainRegion: MainRegion,
+	val mainRegion: GenerationMainRegion,
 
 	@field:SerializedName("version_groups")
-	val versionGroups: List<VersionGroupsItem>? = null,
+	val versionGroups: List<GenerationVersionGroupsItem>? = null,
 
 	@field:SerializedName("moves")
 	val moves: List<GenerationMovesItem>? = null,
@@ -30,18 +30,18 @@ data class GenerationRemote(
 	val id: Int,
 
 	@field:SerializedName("pokemon_species")
-	val pokemonSpecies: List<PokemonSpeciesItem>? = null
+	val pokemonSpecies: List<GenerationPokemonSpeciesItem>? = null
 ) {
 	fun mapToRoomEntity(): GenerationEntity {
 		return GenerationEntity(
-			id = this.id,
-			name = this.name,
+			generationId = this.id,
+			generationName = this.name,
 			mainRegionName = this.mainRegion.name
 		)
 	}
 }
 
-data class MainRegion(
+data class GenerationMainRegion(
 
 	@field:SerializedName("name")
 	val name: String,
@@ -50,7 +50,7 @@ data class MainRegion(
 	val url: String
 )
 
-data class VersionGroupsItem(
+data class GenerationVersionGroupsItem(
 
 	@field:SerializedName("name")
 	val name: String,
@@ -77,11 +77,20 @@ data class GenerationMovesItem(
 	val url: String
 )
 
-data class PokemonSpeciesItem(
+data class GenerationPokemonSpeciesItem(
 
 	@field:SerializedName("name")
 	val name: String,
 
 	@field:SerializedName("url")
 	val url: String
+)
+
+data class GenerationNamesItem(
+
+	@field:SerializedName("name")
+	val name: String,
+
+	@field:SerializedName("language")
+	val language: AbLanguage
 )

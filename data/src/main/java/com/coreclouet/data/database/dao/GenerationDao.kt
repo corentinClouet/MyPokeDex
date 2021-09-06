@@ -16,12 +16,12 @@ interface GenerationDao {
     @Query("SELECT * FROM $GENERATION_TABLE_NAME")
     suspend fun getGenerations(): List<GenerationEntity>?
 
-    @Query("SELECT name FROM $GENERATION_TABLE_NAME")
+    @Query("SELECT generationName FROM $GENERATION_TABLE_NAME")
     suspend fun getGenerationsNames(): List<String>?
 
-    @Query("SELECT * FROM $GENERATION_TABLE_NAME WHERE name=:name")
+    @Query("SELECT * FROM $GENERATION_TABLE_NAME WHERE generationName=:name")
     suspend fun getGeneration(name: String): GenerationEntity?
 
-    @Query("SELECT * FROM $GENERATION_TABLE_NAME WHERE id=:id")
+    @Query("SELECT * FROM $GENERATION_TABLE_NAME WHERE generationId=:id")
     suspend fun getGeneration(id: Long): GenerationEntity?
 }

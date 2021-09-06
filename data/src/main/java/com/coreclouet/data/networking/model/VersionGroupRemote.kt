@@ -31,8 +31,8 @@ data class VersionGroupRemote(
 ) {
 	fun mapToRoomEntity(): VersionGroupEntity {
 		return VersionGroupEntity(
-			id = this.id,
-			name = this.name,
+			versionGroupId = this.id,
+			versionGroupName = this.name,
 			order = this.order,
 			generationName = this.generation.name
 		)
