@@ -1,10 +1,13 @@
 package com.coreclouet.data.repositoryimpl
 
+import com.coreclouet.data.database.*
 import com.coreclouet.data.database.dao.PokemonDao
+import com.coreclouet.data.database.model.StatEntity
 import com.coreclouet.data.networking.ApiService
 import com.coreclouet.domain.model.Pokemon
 import com.coreclouet.domain.repository.AbilityRepository
 import com.coreclouet.domain.repository.PokemonRepository
+import com.coreclouet.domain.repository.StatRepository
 import com.coreclouet.domain.repository.TypeRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -15,6 +18,7 @@ class PokemonRepositoryImpl(
     private val pokemonDao: PokemonDao,
     private val abilityRepository: AbilityRepository,
     private val typeRepository: TypeRepository,
+    private val statRepository: StatRepository,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : PokemonRepository {
 
@@ -80,8 +84,18 @@ class PokemonRepositoryImpl(
                     typeRepository.getTypeFromPokemon(type.type.name, pokemonRemote.id)
                 }
                 //save each stat of this pokemon
-                pokemonRemote.stats?.forEach { stat ->
-                    //TODO save stat
+                pokemonRemote.stats?.let {
+                    //generate stat entity
+                    val statEntity = StatEntity(
+                        pokemonOwnerId = pokemonRemote.id,
+                        hp = it.filter { item -> item.stat.name == HP_STAT_NAME }[0].baseStat,
+                        attack = it.filter { item -> item.stat.name == ATTACK_STAT_NAME }[0].baseStat,
+                        defense = it.filter { item -> item.stat.name == DEFENSE_STAT_NAME }[0].baseStat,
+                        speAttack = it.filter { item -> item.stat.name == SPE_ATT_STAT_NAME }[0].baseStat,
+                        speDefense = it.filter { item -> item.stat.name == SPE_DEF_STAT_NAME }[0].baseStat,
+                        speed = it.filter { item -> item.stat.name == SPEED_STAT_NAME }[0].baseStat
+                    )
+                    statRepository.insertStat(statEntity.mapToDomain())
                 }
                 //return generation
                 val dbMapPokemon = pokemonRemote.mapToRoomEntity(pokemonSpeciesRemote)
