@@ -4,7 +4,7 @@ data class Type(
     val id: Int,
     val name: String,
     val generationName: String,
-    val moveDamageClassName: String,
+    val moveDamageClassName: String?,
     val doubleDamageFrom: List<String>?,
     val doubleDamageTo: List<String>?,
     val halfDamageFrom: List<String>?,

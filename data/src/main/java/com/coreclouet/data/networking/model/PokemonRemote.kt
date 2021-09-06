@@ -601,10 +601,10 @@ data class PkGenerationVi(
 data class PkMovesItem(
 
 	@field:SerializedName("version_group_details")
-	val versionGroupDetails: List<PkVersionGroupDetailsItem?>? = null,
+	val versionGroupDetails: List<PkVersionGroupDetailsItem>,
 
 	@field:SerializedName("move")
-	val move: PkMove? = null
+	val move: PkMove
 )
 
 data class PkSprites(

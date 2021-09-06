@@ -1,5 +1,6 @@
 package com.coreclouet.data.networking.model
 
+import com.coreclouet.data.database.model.MoveEntity
 import com.google.gson.annotations.SerializedName
 
 data class MoveRemote(
@@ -35,13 +36,13 @@ data class MoveRemote(
 	val learnedByPokemon: List<MvLearnedByPokemonItem>? = null,
 
 	@field:SerializedName("target")
-	val target: MvTarget? = null,
+	val target: MvTarget,
 
 	@field:SerializedName("effect_entries")
 	val effectEntries: List<MvEffectEntriesItem>? = null,
 
 	@field:SerializedName("contest_type")
-	val contestType: MvContestType? = null,
+	val contestType: MvContestType?,
 
 	@field:SerializedName("past_values")
 	val pastValues: List<MvPastValuesItem>? = null,
@@ -50,13 +51,13 @@ data class MoveRemote(
 	val names: List<MvNamesItem>? = null,
 
 	@field:SerializedName("meta")
-	val meta: MvMeta? = null,
+	val meta: MvMeta,
 
 	@field:SerializedName("flavor_text_entries")
 	val flavorTextEntries: List<MvFlavorTextEntriesItem>? = null,
 
 	@field:SerializedName("damage_class")
-	val damageClass: MvDamageClass? = null,
+	val damageClass: MvDamageClass,
 
 	@field:SerializedName("name")
 	val name: String,
@@ -75,7 +76,30 @@ data class MoveRemote(
 
 	@field:SerializedName("contest_effect")
 	val contestEffect: MvContestEffect? = null
-)
+) {
+	fun mapToRoomEntity(): MoveEntity {
+		return MoveEntity(
+			moveId = this.id,
+			moveName = this.name,
+			accuracy = this.accuracy,
+			contestTypeName = this.contestType?.name,
+			damageClassName = this.damageClass.name,
+			generationName = this.generation.name,
+			power = this.power,
+			pp = this.pp,
+			targetName = this.target.name,
+			typeName = this.type.name,
+			ailmentName = this.meta.ailment.name,
+			ailmentChance = this.meta.ailmentChance,
+			category = this.meta.category.name,
+			criticalRate = this.meta.critRate,
+			drain = this.meta.drain,
+			flinchChance = this.meta.flinchChance,
+			healing = this.meta.healing,
+			statChance = this.meta.statChance
+		)
+	}
+}
 
 data class MvEffectEntriesItem(
 
@@ -194,7 +218,7 @@ data class MvCategory(
 data class MvMeta(
 
 	@field:SerializedName("healing")
-	val healing: Int? = null,
+	val healing: Int,
 
 	@field:SerializedName("min_hits")
 	val minHits: Any? = null,
@@ -203,31 +227,31 @@ data class MvMeta(
 	val maxHits: Any? = null,
 
 	@field:SerializedName("ailment_chance")
-	val ailmentChance: Int? = null,
+	val ailmentChance: Int,
 
 	@field:SerializedName("crit_rate")
-	val critRate: Int? = null,
+	val critRate: Int,
 
 	@field:SerializedName("flinch_chance")
-	val flinchChance: Int? = null,
+	val flinchChance: Int,
 
 	@field:SerializedName("min_turns")
 	val minTurns: Any? = null,
 
 	@field:SerializedName("ailment")
-	val ailment: MvAilment? = null,
+	val ailment: MvAilment,
 
 	@field:SerializedName("category")
-	val category: MvCategory? = null,
+	val category: MvCategory,
 
 	@field:SerializedName("max_turns")
 	val maxTurns: Any? = null,
 
 	@field:SerializedName("drain")
-	val drain: Int? = null,
+	val drain: Int,
 
 	@field:SerializedName("stat_chance")
-	val statChance: Int? = null
+	val statChance: Int
 )
 
 data class MvLearnedByPokemonItem(

@@ -32,8 +32,9 @@ val repositoryModule = module {
             apiService = get(),
             pokemonDao = get(),
             abilityRepository = get(),
+            typeRepository = get(),
             statRepository = get(),
-            typeRepository = get()
+            moveRepository = get()
         )
     }
     factory<TypeRepository> {
@@ -49,5 +50,11 @@ val repositoryModule = module {
             statDao = get()
         )
     }
-
+    factory<MoveRepository> {
+        MoveRepositoryImpl(
+            apiService = get(),
+            moveDao = get(),
+            pokemonMoveCrossRefDao = get()
+        )
+    }
 }

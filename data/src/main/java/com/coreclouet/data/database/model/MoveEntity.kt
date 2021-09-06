@@ -11,7 +11,7 @@ data class MoveEntity(
     val moveId: Int,
     val moveName: String,
     val accuracy: Int,
-    val contestTypeName: String,
+    val contestTypeName: String?,
     val damageClassName: String,
     val generationName: String,
     val power: Int,

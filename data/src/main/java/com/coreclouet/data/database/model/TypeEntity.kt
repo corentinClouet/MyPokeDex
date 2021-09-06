@@ -12,7 +12,7 @@ data class TypeEntity(
     val typeId: Int,
     val typeName: String,
     val generationName: String,
-    val moveDamageClassName: String,
+    val moveDamageClassName: String?,
     val doubleDamageFrom: String?,
     val doubleDamageTo: String?,
     val halfDamageFrom: String?,

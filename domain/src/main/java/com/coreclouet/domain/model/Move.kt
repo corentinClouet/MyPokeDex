@@ -4,7 +4,7 @@ data class Move(
     val id: Int,
     val name: String,
     val accuracy: Int,
-    val contestTypeName: String,
+    val contestTypeName: String?,
     val damageClassName: String,
     val effectEntries: List<MoveEffectEntry>?,
     val flavorTextEntries: List<MoveFlavorTextEntry>?,

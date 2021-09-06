@@ -13,7 +13,7 @@ data class TypeRemote(
 	val gameIndices: List<TpGameIndicesItem>? = null,
 
 	@field:SerializedName("move_damage_class")
-	val moveDamageClass: TpMoveDamageClass,
+	val moveDamageClass: TpMoveDamageClass?,
 
 	@field:SerializedName("names")
 	val names: List<TpNamesItem>? = null,
@@ -38,7 +38,7 @@ data class TypeRemote(
 			typeId = this.id,
 			typeName = this.name,
 			generationName = this.generation.name,
-			moveDamageClassName = this.moveDamageClass.name,
+			moveDamageClassName = this.moveDamageClass?.name,
 			doubleDamageFrom = this.damageRelations?.doubleDamageFrom?.joinToString(separator = DELIMITER) { it -> it.name },
 			doubleDamageTo = this.damageRelations?.doubleDamageTo?.joinToString(DELIMITER) { it -> it.name },
 			halfDamageFrom = this.damageRelations?.halfDamageFrom?.joinToString(DELIMITER) { it -> it.name },

@@ -1,14 +1,12 @@
 package com.coreclouet.data.repositoryimpl
 
+import android.util.Log
 import com.coreclouet.data.database.*
 import com.coreclouet.data.database.dao.PokemonDao
 import com.coreclouet.data.database.model.StatEntity
 import com.coreclouet.data.networking.ApiService
 import com.coreclouet.domain.model.Pokemon
-import com.coreclouet.domain.repository.AbilityRepository
-import com.coreclouet.domain.repository.PokemonRepository
-import com.coreclouet.domain.repository.StatRepository
-import com.coreclouet.domain.repository.TypeRepository
+import com.coreclouet.domain.repository.*
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -19,6 +17,7 @@ class PokemonRepositoryImpl(
     private val abilityRepository: AbilityRepository,
     private val typeRepository: TypeRepository,
     private val statRepository: StatRepository,
+    private val moveRepository: MoveRepository,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : PokemonRepository {
 
@@ -51,6 +50,7 @@ class PokemonRepositoryImpl(
         val pokemonsNamesList = getPokemonsNamesList()
         pokemonsNamesList?.let {
             it.forEach { pokemonName ->
+                Log.d("CRTNCLT", "getPokemonsList: $pokemonName")
                 //get data from BO and save it to DB
                 getPokemon(pokemonName)
             }
@@ -77,13 +77,13 @@ class PokemonRepositoryImpl(
                 }
                 //save each move of this pokemon
                 pokemonRemote.moves?.forEach { move ->
-                    //TODO save move
+                    moveRepository.getMoveFromPokemon(move.move.name, pokemonRemote.id)
                 }
                 //save each type of this pokemon
                 pokemonRemote.types.forEach { type ->
                     typeRepository.getTypeFromPokemon(type.type.name, pokemonRemote.id)
                 }
-                //save each stat of this pokemon
+                //save stats of this pokemon
                 pokemonRemote.stats?.let {
                     //generate stat entity
                     val statEntity = StatEntity(

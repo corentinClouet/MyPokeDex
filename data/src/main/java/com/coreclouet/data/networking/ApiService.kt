@@ -31,7 +31,7 @@ interface ApiService {
     @GET("ability/{id}")
     suspend fun getAbilityById(@Path("id") id: Int): Response<AbilityRemote?>
 
-    @GET("pokemon")
+    @GET("pokemon?limit=151&offset=0")
     suspend fun getPokemons(): Response<PokemonListRemote?>
 
     @GET("pokemon/{name}")
@@ -48,4 +48,10 @@ interface ApiService {
 
     @GET("type/{id}")
     suspend fun getTypeById(@Path("id") id: Int): Response<TypeRemote?>
+
+    @GET("move/{name}")
+    suspend fun getMoveByName(@Path("name") name: String): Response<MoveRemote?>
+
+    @GET("move/{id}")
+    suspend fun getMoveById(@Path("id") id: Int): Response<MoveRemote?>
 }
